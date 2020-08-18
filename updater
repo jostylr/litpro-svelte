@@ -1,0 +1,4 @@
+#! /bin/bash
+
+cp litpro/* ../litpro/
+cp components/* ../sapper/src/components/

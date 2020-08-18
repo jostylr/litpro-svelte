@@ -1,0 +1,7 @@
+#! /bin/bash
+
+cp litpro/* ../litpro/
+cp components/* ../sapper/src/components/
+cp lprc.js ../
+cp template.html ../sapper/src/
+cp example.html ../sapper/src/routes/
