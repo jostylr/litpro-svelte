@@ -26,7 +26,7 @@ Here is the setup
   properties. 
 * [template](template.md "load:") This saves a template for having katex and
   jsxgraph as well the jsxgraph component Jxg.  
-* [example](example.md "load:") Something to try this out on
+* [utilities](utilities.md "load:") Need some scanning, splitting stuff
 
 ## LPRC
 
@@ -35,29 +35,38 @@ stuff such as a pug-lite syntax, tailwindcss-esque, and Katex, JSXGraph
 compoonents. 
 
 
-    
+    try { 
+       
     const psv = require('./litpro/psv.js');
     const twcss = require('./litpro/twcss.js');
     const katex = require('./litpro/katex.js');
 
+    console.log(typeof psv, typeof twcss, typeof katex);
 
     module.exports = function(Folder, args) {
-
-        try {
-        console.error("hello lprc");
-        
-
         Folder.commands.psv = psv;
         Folder.commands.psv._label = "psv";
         Folder.sync("twcss", twcss);
         Folder.sync("katex",  katex);
-        } catch (e) {
-            console.log(e);
-        }
     };
+
+    console.log("done loading lprc");
+
+    } catch (e) {
+        console.log(e);
+    }
 
 
 [lprc.js](# "save:")
+
+
+### Copy example
+
+The example.md file in the main directory is a live example to use. But we
+want to make sure the build directory gets a copy. So we do a copy command for
+it. 
+
+[copy example](# "exec: cp example.md build/example.md")
 
 
 ##  Distributor
@@ -87,7 +96,7 @@ This copies all the files.
     cp components/* ../sapper/src/components/
     cp lprc.js ../
     cp template.html ../sapper/src/
-    cp example.html ../sapper/src/routes/
+
     
 [all](# "save:")
 
@@ -100,5 +109,11 @@ This copies all the files.
     lprc.js
 
 [../.gitignore](# "save:")
+
+## Build gitignore  (build is a separate git branch for pulling)
+
+    .checksum
+
+[.gitignore](# "save:")
 
 

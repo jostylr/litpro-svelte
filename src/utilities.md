@@ -11,7 +11,7 @@ we do create one for testing purposes.
 
     module.exports = {has, makeLineCounter, convertToMap, makeScanners};
 
-[../utilities.js](# "save:")
+[litpro/utilities.js](# "save:")
 
 ## Has
 

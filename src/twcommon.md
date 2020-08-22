@@ -45,6 +45,7 @@ These are just single probabilities that are useful to have a single term for.
             inblock : 'display:inline-block',
             flex: 'display:flex',
             flexinline : 'display:inline-flex',
+            grid : 'display:grid',
             gridinline : 'display:inline-grid',
         };
 

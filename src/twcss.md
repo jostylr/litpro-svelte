@@ -17,7 +17,7 @@ This exports a little module
 
     _"twcommon::"
 
-[twcss.js](# "save:")
+[litpro/twcss.js](# "save:")
 
 [twcommon](twcommon.md "load:")
 
@@ -107,6 +107,7 @@ After splitting on top-level semicolons, we do a variety of things:
             //console.log(sel, propstr, s.split(propstr, ';'));
             let props = s.split(propstr, ';').
                 map(prop => prop.trim()).
+                filter( el => el).
                 map( (prop) => {
                     if (prop.slice(0,2) === '--') {
                         _":leading double dash"
@@ -161,7 +162,7 @@ BAD FORM: el is used in multiple times, overlapping definition.
                             return twReplace(el, twcss);
                         }
                     }).
-                    join(';');
+                    join(';\n    ');
             } else {
                 if (el.includes(':') ) {
                     propstr = el;
@@ -232,15 +233,15 @@ For a given selector, we create a breaks object
         Object.keys(breaksObj).
             forEach( (key) => {
                 if (key) {
-                    let body = breaksObj[key].join(';');
+                    let body = breaksObj[key].join(';\n    ');
                     if (!body) {return;}
-                    text += twReplace( key, twcss) + '{' ;
-                    text += selector + '{' + body + ';}';
-                    text += '}';
+                    text += '\n' + twReplace( key, twcss) + ' {\n ' ;
+                    text +=  selector + ' {\n    ' + body + ';\n }';
+                    text += '\n}';
                 } else {
-                    let body = breaksObj[''].join(';');
+                    let body = breaksObj[''].join(';\n    ');
                     if (!body) {return;}
-                    text += selector + '{' + body + ';}'; 
+                    text += '\n' + selector + ' {\n    ' + body + ';\n}'; 
                 }
         });
 
@@ -329,7 +330,7 @@ need for there to be an object lookup since this is one...
             } else if (typeof prop === 'function') {
                 return prop(value);
             } else if (Array.isArray(prop) ) {
-                return prop.join(value + ';') + value;
+                return prop.join(value + ';\n    ') + value;
             } else {
                 return prop[value] ?? '';
             }

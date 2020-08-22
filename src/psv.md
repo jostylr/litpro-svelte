@@ -150,9 +150,6 @@ think.
             _":mainblock name"
         }
         
-        console.log(input);
-        console.log(name, args, start);
-
         _":minors"
 
         gcd.once("minor ready:" + file + ":" + stripped, function (text) {

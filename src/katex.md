@@ -6,7 +6,7 @@ Defines a katex function for consumption into a svelte Katex component. Use
 single dollar signs for inline math, double dollar signs for block math, and
 backslash dollar sign for an actual dollar sign. 
 
-    (text) => {
+    module.exports = function katex (text) {
         text = text.replace(/\\\$/g, '&#36;');
         
         text = text.replace(/\$\$([^$]*)\$\$/g, (m, mtext, offset, whole) => {
