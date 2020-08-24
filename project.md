@@ -110,6 +110,7 @@ This copies all the files.
 ## Build gitignore  (build is a separate git branch for pulling)
 
     .checksum
+    utilities/
 
 [.gitignore](# "save:")
 

@@ -95,6 +95,10 @@ We have single static words just for a little briefer:
         grid : 'display:grid',
         gridinline : 'display:inline-grid',
 
+We also have border radius (br: brb, brt, brl, brr, bra) and border width (bw:
+bwx, bwy, bwt, bwl, bwr, bwb, bwa). The widths have width 0, 1, 2, 4, 8
+(straight px) while the radii have  zr, sm, nm, md, lg, fl  for zero, small,
+normal, medium, large, full). 
     
 
 
