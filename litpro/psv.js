@@ -92,9 +92,6 @@ module.exports = function psv (text, args, name) {
             start = name.slice(i, n);
         }
         
-        console.log(input);
-        console.log(name, args, start);
-    
         n = args.length;
         for (i = 1; i < n; i += 2) {
             if (args[i] && (typeof args[i] === "string") ) {

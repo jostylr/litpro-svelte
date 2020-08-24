@@ -1,4 +1,4 @@
-(text) => {
+module.exports = function katex (text) {
     text = text.replace(/\\\$/g, '&#36;');
     
     text = text.replace(/\$\$([^$]*)\$\$/g, (m, mtext, offset, whole) => {
