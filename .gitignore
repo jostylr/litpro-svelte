@@ -2,3 +2,4 @@ litpro/
 build/
 sapper/
 lprc.js
+.DS_Store

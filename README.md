@@ -66,6 +66,37 @@ uses and shorthand notations. It differs quite a bit, in particular, not using
 classes. Given that svelte has the styles scoped to the element, using the
 structure of the component seems fine. 
 
+Spacing commands are p for padding, m for margin, with x,y,l,r,t,b,a following
+them standing for left+right, top+bottom, left, right, top, bottom, and all.
+There is also gp, gapx, gapy for gap, column-gap, row-gap. The spacing is then
+of the form px 0-6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64. 
+
+For colors, we use numbers 0-9 for severity (except black, white which is just
+one color and also transparent).  Colors are gray, cool-gray, red, orange,
+yellow, green, teal, blue, indigo, purple, pink.  From tailwind. 
+
+The color types can be used with bg (background-color), liner (border-color), and
+text (color) 
+
+We have single static words just for a little briefer: 
+
+        static : 'position: static',
+        fixed : "position: fixed",	
+        absolute : "position: absolute",
+        relative : "position: relative",	
+        sticky : "position: sticky".
+        delete : 'display:none',
+        hide: 'visibility: hidden',
+        block : 'display:block',
+        inline : 'display:inline',
+        inblock : 'display:inline-block',
+        flex: 'display:flex',
+        flexinline : 'display:inline-flex',
+        grid : 'display:grid',
+        gridinline : 'display:inline-grid',
+
+    
+
 
 ## JSXGraph
 
@@ -77,8 +108,3 @@ There is no translation layer here, but this produces the svelte-component for
 having it. Properties of width and height on the element. 
 
 
-
-
-
-
-A few helpers for using svelte with literate-programming (puglite, tailwindishness, katex)

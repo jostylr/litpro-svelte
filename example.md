@@ -49,6 +49,8 @@ to show the deployment of a sapper/svelte page.
         py-3;
         --grid,SM [flex;align-items:center];
         text--XL gray-5,red-1;
+        brt-sm;
+        brb-lg;
     }
 
     .blue-gray {

@@ -41,16 +41,12 @@ compoonents.
     const twcss = require('./litpro/twcss.js');
     const katex = require('./litpro/katex.js');
 
-    console.log(typeof psv, typeof twcss, typeof katex);
-
     module.exports = function(Folder, args) {
         Folder.commands.psv = psv;
         Folder.commands.psv._label = "psv";
         Folder.sync("twcss", twcss);
         Folder.sync("katex",  katex);
     };
-
-    console.log("done loading lprc");
 
     } catch (e) {
         console.log(e);
@@ -107,6 +103,7 @@ This copies all the files.
     build/
     sapper/
     lprc.js
+    .DS_Store
 
 [../.gitignore](# "save:")
 

@@ -18,15 +18,19 @@ This is a function that creates the common tw css properties.
 
         _"spacing"
 
+        _"borders"
+
         _"colors"
     
         let common = {
             ...colortypes,
             ...breaks,
             ...statics,
-            ...spaces
+            ...spaces,
+            ...borderRadii,
+            ...borderWidths
         };
-
+        
         return common;
     }
 
@@ -38,6 +42,10 @@ These are just single probabilities that are useful to have a single term for.
 
         let statics = {
             static : 'position: static',
+            fixed : "position: fixed",	
+            absolute : "position: absolute",
+            relative : "position: relative",	
+            sticky : "position: sticky",
             delete : 'display:none',
             hide: 'visibility: hidden',
             block : 'display:block',
@@ -120,11 +128,11 @@ section is what gets put into each of the objects.
         let [leaders, followers, alone, insert] = text.split('\n---\n').
             map( el => el.trim() ).
             map( (el, ind) => {
-                if (ind === 3) { return el; } // alone is what it is
+                if (ind === 3) { return el; } // insert is what it is
                 return el.split('\n').
                     map( el => el.trim() ).
-                    map( el => el.split(' ')).
-                    filter( el => el );
+                    filter( el => el).
+                    map( el => el.split(' '))
             });
         let retarr = [];
 
@@ -163,6 +171,71 @@ section is what gets put into each of the objects.
 
 
 [split-merge](# "define:")
+
+## Borders
+
+We have border radii and border width
+
+    let radii = {_":radii"};
+    let widths = {_":widths"};
+
+    let borderRadii = _":border radii | split-merge";
+    let borderWidths = _":border widths | split-merge";
+
+[radii]()
+
+    zr : 0,
+    sm : '.125rem',
+    nm : '.25rem',
+    md : '.375rem',
+    lg : '0.5rem',
+    fl : '9999px'
+
+   
+
+[widths]()
+
+    0 : '0',
+    1 : '1px',
+    2 : '2px',
+    4 : '4px',
+    8 : '8px'
+
+[border radii]()
+
+    br border
+    ---
+    l top-left-radius bottom-left-radius
+    r top-right-radius bottom-right-radius
+    t top-left-radius bottom-left-radius
+    b bottom-left-radius bottom-right-radius
+    tl top-left-radius
+    tr top-right-radius
+    bl bottom-left-radius
+    br bottomr-right-radius
+    a 
+    ---
+
+    ---
+    ...radii
+
+[border widths]()
+
+    bw border
+    ---
+    x left-width right-width 
+    y top-width bottom-width
+    l left-width
+    r right-width
+    t top-width
+    b bottom-width
+    a width
+    ---
+
+    ---
+    ...widths
+
+
 
 ## Colors
 
