@@ -5,7 +5,7 @@ to show the deployment of a sapper/svelte page.
 
     _"xsvelte | psv xsvelte | katex"
 
-[../sapper/src/routes/example.svelte](# "save: ")
+[../sapper/src/routes/example.svelte](# "save: | log")
 
 # xSvelte
 
@@ -25,8 +25,20 @@ to show the deployment of a sapper/svelte page.
         \_":par|md"
         p.big-red
             _":par"
-    p.dollars
+    p.blue-gray.big-red.dollars
        Mr.. Money likes $x^2$ over $$\frac{x}{x^2}$$ 
+
+
+    h2.
+
+        p.
+            Cool with some text. 
+        #
+        {#each greetings as greet}
+            Greet. {greet} /
+        {/each}
+
+    
 
 
 [par]()
@@ -37,10 +49,14 @@ to show the deployment of a sapper/svelte page.
 [js]()
 
     import Katex from '../components/Katex.svelte';
+    import Greet from '../components/Greet.svelte';
+
     let great = 3;
     let lt = 4;
     let seven = 8;
     let more = 0;
+
+    let greetings = ['hi', 'bye', 'see ya'];
     
 [css]() 
     
@@ -66,4 +82,36 @@ to show the deployment of a sapper/svelte page.
 
     .dollars {
         text-yellow-9;
+    }
+
+## Greeting
+
+This is a simple greet box. 
+
+
+    script.
+        \_":js"
+
+    style.
+        \_":css | twcss"
+
+    p.
+        {greet}
+
+[../sapper/src/components/Greet.svelte](# "save: | psv greeting")
+
+
+[js]()
+
+    export let greet;
+
+
+[css]()
+
+    p {
+        bg-blue-7;
+        liner-red-2;
+        bwa-4;
+        bra-md;
+        pa-10;
     }

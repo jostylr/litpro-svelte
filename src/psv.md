@@ -21,6 +21,7 @@ means the attribute continues.
         let lines = text.split("\n");
         let ret = [];
         let elreg = /^(\s*)(\w*)(\#[^.\s]*)?((?:\.[^.\s]*)*)(.*)$/;
+        let allspaces = /^\s*$/;
         let els = [];
         let indent = 0;
 
@@ -32,17 +33,26 @@ We will loop over the lines figuring out everything we need to figure out. We
 use an actual loop because of continued lines, we may want to manually skip
 over some stuff. 
         
+We also need to deal with empty lines (ignore them, basically) as well as
+self-closing tags. These can be indicated with a `/` at the end; it will close
+automatically, but we need to make sure there is no closing element. 
+
         let n = lines.length;
         let i;
+
         for (i = 0; i < n; i += 1) {
             let line = lines[i];
+            _":empty line"
             let [fullmatch, spaces, el, id, cls, rest] = line.match(elreg);
             let curindent = spaces.length;
+            console.log(curindent, indent);
             if (curindent <= indent) {
                 _":close tag"
-                indent = curindent;
             } 
+            indent = curindent;
             _":new line"
+
+            console.log(i, indent, line);
         }
         let curindent = 0; 
         _":close tag"
@@ -74,7 +84,7 @@ from if we want text that has the first # or '.' not be indicative of an element
             pieces.push(`id="${id.slice(1)}"`); 
         }
         if (cls && (cls.length > 1) ) {
-            pieces.push(`class="${cls.slice(1).replace('.', ' ')}"`);
+            pieces.push(`class="${cls.slice(1).replace(/\./g, ' ')}"`);
         }
         rest = rest.trim();
         while ( (rest[rest.length-1] === '|') && (i < (n-1) ) ) {
@@ -85,6 +95,15 @@ from if we want text that has the first # or '.' not be indicative of an element
         }
         if (rest) {
             pieces.push(rest);
+
+If the rest ends in a fowardslash, then it is self-closing. We pop off the
+element that would have been closing and reset the indent to the previous
+level.
+
+            if (rest[rest.length-1] === '/') {
+                els.pop(); // no closing element here
+                indent = els[els.length-1][1] || 0;
+            }
         }
         ret.push(`${spaces}<${pieces.join(' ')}>`);
     } else {
@@ -126,6 +145,16 @@ cl for closing. We keep closing until the indent is done.
         els.push([clel, clindent, clspaces]);
     }
     
+
+[empty line]() 
+
+It is possible to have empty lines for readability. They don't exist in the
+output. 
+
+    if ( allspaces.test(line) ) {
+        continue;
+    }
+
 
 [compile]()
 
