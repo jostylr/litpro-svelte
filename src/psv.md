@@ -45,14 +45,12 @@ automatically, but we need to make sure there is no closing element.
             _":empty line"
             let [fullmatch, spaces, el, id, cls, rest] = line.match(elreg);
             let curindent = spaces.length;
-            console.log(curindent, indent);
             if (curindent <= indent) {
                 _":close tag"
             } 
             indent = curindent;
             _":new line"
 
-            console.log(i, indent, line);
         }
         let curindent = 0; 
         _":close tag"
