@@ -3,14 +3,20 @@ module.exports = function psv (text, args, name) {
     let lines = text.split("\n");
     let ret = [];
     let elreg = /^(\s*)(\w*)(\#[^.\s]*)?((?:\.[^.\s]*)*)(.*)$/;
+    let allspaces = /^\s*$/;
     let els = [];
     let indent = 0;
     let n = lines.length;
     let i;
+
     for (i = 0; i < n; i += 1) {
         let line = lines[i];
+        if ( allspaces.test(line) ) {
+            continue;
+        }
         let [fullmatch, spaces, el, id, cls, rest] = line.match(elreg);
         let curindent = spaces.length;
+        console.log(curindent, indent);
         if (curindent <= indent) {
             let [clel, clindent, clspaces] = els.pop() ?? [];
             while (curindent <= clindent) {
@@ -20,8 +26,8 @@ module.exports = function psv (text, args, name) {
             if (clel) {
                 els.push([clel, clindent, clspaces]);
             }
-            indent = curindent;
         } 
+        indent = curindent;
         if (id && (id[1] === '#') ) {
             ret.push(line.replace('#', '')); //remove first #
         } else if (cls && (cls[1] === '.') ) {
@@ -46,7 +52,7 @@ module.exports = function psv (text, args, name) {
                 pieces.push(`id="${id.slice(1)}"`); 
             }
             if (cls && (cls.length > 1) ) {
-                pieces.push(`class="${cls.slice(1).replace('.', ' ')}"`);
+                pieces.push(`class="${cls.slice(1).replace(/\./g, ' ')}"`);
             }
             rest = rest.trim();
             while ( (rest[rest.length-1] === '|') && (i < (n-1) ) ) {
@@ -57,11 +63,17 @@ module.exports = function psv (text, args, name) {
             }
             if (rest) {
                 pieces.push(rest);
+                if (rest[rest.length-1] === '/') {
+                    els.pop(); // no closing element here
+                    indent = els[els.length-1][1] || 0;
+                }
             }
             ret.push(`${spaces}<${pieces.join(' ')}>`);
         } else {
             ret.push(line);
         }
+
+        console.log(i, indent, line);
     }
     let curindent = 0; 
     let [clel, clindent, clspaces] = els.pop() ?? [];
