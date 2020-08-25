@@ -16,7 +16,6 @@ module.exports = function psv (text, args, name) {
         }
         let [fullmatch, spaces, el, id, cls, rest] = line.match(elreg);
         let curindent = spaces.length;
-        console.log(curindent, indent);
         if (curindent <= indent) {
             let [clel, clindent, clspaces] = els.pop() ?? [];
             while (curindent <= clindent) {
@@ -73,7 +72,6 @@ module.exports = function psv (text, args, name) {
             ret.push(line);
         }
 
-        console.log(i, indent, line);
     }
     let curindent = 0; 
     let [clel, clindent, clspaces] = els.pop() ?? [];

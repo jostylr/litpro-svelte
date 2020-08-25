@@ -5,7 +5,7 @@ to show the deployment of a sapper/svelte page.
 
     _"xsvelte | psv xsvelte | katex"
 
-[../sapper/src/routes/example.svelte](# "save: | log")
+[../sapper/src/routes/example.svelte](# "save: ")
 
 # xSvelte
 
