@@ -28,7 +28,6 @@ to show the deployment of a sapper/svelte page.
     p.blue-gray.big-red.dollars
        Mr.. Money likes $x^2$ over $$\frac{x}{x^2}$$ 
 
-
     h2.
 
         p.
@@ -38,7 +37,11 @@ to show the deployment of a sapper/svelte page.
             Greet. {greet} /
         {/each}
 
+    div.  /
+
+
     
+       
 
 
 [par]()

@@ -64,7 +64,7 @@ module.exports = function psv (text, args, name) {
                 pieces.push(rest);
                 if (rest[rest.length-1] === '/') {
                     els.pop(); // no closing element here
-                    indent = els[els.length-1][1] || 0;
+                    indent = els[els.length-1]?.[1] ?? 0;
                 }
             }
             ret.push(`${spaces}<${pieces.join(' ')}>`);
