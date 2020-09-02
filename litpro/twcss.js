@@ -228,6 +228,7 @@ function twcssCommon  () {
             inline : 'display:inline',
             inblock : 'display:inline-block',
             flex: 'display:flex',
+            flexvert : 'display:flex; flex-direction:column',
             flexinline : 'display:inline-flex',
             grid : 'display:grid',
             gridinline : 'display:inline-grid',

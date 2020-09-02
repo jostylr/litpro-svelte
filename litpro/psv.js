@@ -36,7 +36,7 @@ module.exports = function psv (text, args, name) {
             let opel;
             if (el) {
                 if (el === el.toUpperCase() ) {
-                    opel =  'sevelte:' + el.toLowerCase() ;
+                    opel =  'svelte:' + el.toLowerCase() ;
                 } else {
                     opel = el;
                 }
