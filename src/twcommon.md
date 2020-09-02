@@ -52,6 +52,7 @@ These are just single probabilities that are useful to have a single term for.
             inline : 'display:inline',
             inblock : 'display:inline-block',
             flex: 'display:flex',
+            flexvert : 'display:flex; flex-direction:column',
             flexinline : 'display:inline-flex',
             grid : 'display:grid',
             gridinline : 'display:inline-grid',

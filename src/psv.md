@@ -117,7 +117,7 @@ a span.
     let opel;
     if (el) {
         if (el === el.toUpperCase() ) {
-            opel =  'sevelte:' + el.toLowerCase() ;
+            opel =  'svelte:' + el.toLowerCase() ;
         } else {
             opel = el;
         }
